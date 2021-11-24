@@ -1,0 +1,37 @@
+import random
+print('Добро пожаловать в числовую угадайку')
+num1, num3 = input("Давай введем границы нашего диапазона "), input()
+num2 = random.randint(int(num1), int(num3))
+def is_valid(mul):
+    return mul.isdigit() or int(num1) <= int(mul) <= int(num3)
+
+def game():
+    cost = 0
+    while True:
+        while True:
+            mul = input(f"Веди число от {num1}  до  {num3} ")
+            if is_valid(mul):
+                mul = int(mul)
+                cost += 1
+                break
+            else:
+                print(f'А может быть все-таки введем целое число от {num1} до {num3}?')
+        if mul < num2:
+            print('Ваше число меньше загаданного, попробуйте еще разок')
+        elif mul > num2:
+            print('Ваше число больше загаданного, попробуйте еще разок')
+        else:
+            print('Вы угадали, поздравляем!')
+            print(cost, "Вот столько ты пытался")
+            print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+            break
+print("Я хочу сыграть с тобой в игру, а ты?")
+game()
+
+while True:
+    igra = input("Повторим?  ")
+    if igra == "yes":
+        game()
+    else:
+        print("Как хочешь, тварь")
+        break
